@@ -11,7 +11,7 @@ Minimalist is a simple and lightweight to-do app that supports tasks, projects, 
 
 ## Live Demo
 
-Check out the live demo of the app: [MinimaList App](https://a.sad.dan.github.io/minima-list)
+Check out the live demo of the app: [MinimaList App](https://a-sad-dan.github.io/minima-list/)
 
 ## Design
 
