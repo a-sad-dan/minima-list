@@ -9,7 +9,88 @@
 body {
     font-family: 'Mulish', sans-serif;
     background-color: antiquewhite;
-    display: grid;
-    place-content:center;
+}
+
+.page-wrapper {
+    background-color: #FDFDFD;
+    display: flex;
     height: 100vh;
+}
+
+
+#side-bar {
+    flex-basis: 300px;
+    background: #FDFDFD;
+    display: grid;
+    align-content: baseline;
+    grid-template-rows: min-content;
+    grid-gap: 0.8rem;
+
+    padding: 1rem;
+    position: relative;
+    overflow-x: hidden;
+    z-index: 10;
+    opacity: 1;
+    transition: 0.4s ease, opacity 0.3s ease;
+    scrollbar-width: none;
+    border-right: 4px solid #F5F5F5;
+}
+
+#side-bar.closed {
+    flex-basis: 0px;
+    width: 0px;
+    padding: 0px;
+    opacity: 0;
+}
+
+.open-btn {
+    display: none;
+}
+
+
+#main {
+    flex-grow: 1;
+    background-color: #FBFBFB;
+}
+
+#minimaList {
+    justify-self: center;
+    width: 120px;
+    padding: 0.8rem;
+}
+
+.close-btn,
+.open-btn {
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+}
+
+.open-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    display: block;
+}
+
+
+.close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    #side-bar {
+        grid-gap: 0.6rem;
+        box-shadow: 0px 0px 16px -4px rgba(0, 0, 0, 0.24);
+        border: unset;
+    }
+
+    #minimaList {
+        width: 100px;
+    }
+
 }
