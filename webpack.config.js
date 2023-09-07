@@ -16,8 +16,8 @@ module.exports = {
     new HtmlWebpackPlugin({
 
       title: 'Minima-List',
-      template: 'src/index.html',
-      favicon: path.resolve(__dirname, 'src', 'MinimaListLogo.svg'),
+      template: './src/index.html',
+      favicon: path.resolve(__dirname, './src/assets', 'MinimaListLogo.svg'),
     }),
 
   ],
