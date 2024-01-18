@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+body {
+    font-family: 'Mulish', sans-serif;
+    background-color: antiquewhite;
+}
+
+#app {
+    background-color: #FDFDFD;
+    display: flex;
+    height: 100vh;
+}
+
+
+#sidebar {
+    flex-basis: 260px;
+    background: #FDFDFD;
+    display: grid;
+    align-content: baseline;
+    grid-template-rows: min-content;
+    grid-gap: 0.6rem;
+
+    padding: 1rem;
+    position: relative;
+    overflow-x: hidden;
+    z-index: 10;
+    opacity: 1;
+    transition: 0.4s ease, opacity 0.3s ease;
+    scrollbar-width: none;
+    border-right: 4px solid #F5F5F5;
+}
+
+#sidebar.closed {
+    flex-basis: 0px;
+    width: 0px;
+    padding: 0px;
+    opacity: 0;
+}
+
+#open-sidebar {
+    display: none;
+}
+
+
+#main {
+    flex-grow: 1;
+    background-color: #FBFBFB;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+}
+
+#content {
+    /* flex-grow: 2; */
+    gap: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    align-items: start;
+    flex-flow: wrap;
+    justify-content: left;
+}
+
+
+#heading {
+    font-size: 1.8rem;
+    padding-top: .2rem;
+    color: #444444;
+    text-transform: capitalize;
+}
+
+.padded {
+    padding-left: 3.8rem;
+    transition: 0.3s ease;
+    /* ?Change to >0.5 for bouncy effect */
+}
+
+
+#minimaList {
+    justify-self: center;
+    width: 120px;
+    padding: 0.8rem;
+}
+
+#sidebar #close-sidebar,
+#open-sidebar {
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+}
+
+#open-sidebar {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    display: block;
+}
+
+
+#sidebar #close-sidebar {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    #sidebar {
+        grid-gap: 0.6rem;
+        box-shadow: 0px 0px 16px -4px rgba(0, 0, 0, 0.24);
+        border: unset;
+    }
+
+    #Logo {
+        width: 100px;
+    }
+}
