@@ -8,6 +8,23 @@
 </head>
 
 <body>
+    <div id="app">
+        <div id="sidebar">
+            <img src="<%=require('./assets/icons/chevronBack.svg')%>" alt="" id="close-sidebar">
+            <img src="<%= require('./assets/MinimaListLogo.svg') %>"" alt=" minimaList Logo" id="minimaList">
+            <button id="add-project" class="project-btn">New Project</button>
+            <div id="projects-container"></div>
+            <button id="theme-toggle">Light</button>
+        </div>
+
+        <div id="main">
+            <div id="topbar">
+                <p id="heading">MinimaList</p>
+            </div>
+            <div id="content">
+            </div>
+            <img src="<%= require('./assets/icons/menu.svg') %>" alt="" id="open-sidebar">
+        </div>
 
 </body>
 
