@@ -1,6 +1,6 @@
 // Responsibility: Creates instances of project objects.
 
-const createTodo = (title = '', dueDate = null, description = '', priority = 'low', isDone = 'false') => {
+const createTodo = (title = '', description = '', dueDate = null, priority = 'low', isDone = 'false') => {
     const todo = {
         // props
         title: title,
@@ -9,15 +9,15 @@ const createTodo = (title = '', dueDate = null, description = '', priority = 'lo
         priority: priority,
         isDone: isDone,
 
-        // methods //! instead of singleChanges -> update todo changes all
-        changeTitle: function (newTitle) {
+        // methods
+        updateTodo: function (newTitle, newDescription, newDueDate, newPriority) {
             this.title = newTitle;
-        },
-        changeDueDate: function (newDueDate) {
+            this.description = newDescription;
             this.dueDate = newDueDate;
+            this.priority = newPriority;
         },
-        toggleStatus: function () { isDone = !isDone },
-        changePriority: function (newPriority) { this.priority = newPriority }
+
+        toggleStatus: function () { this.isDone = !this.isDone },
     };
 
     return todo;
