@@ -8,26 +8,21 @@ const todoManager = (() => {
         const newTodo = createTodo(title, description, dueDate, priority);
         project.addTodo(newTodo);
     }
-    const editTodo = (todo, newTitle, newDescription, newDueDate) => {
-        todo.updateTodo(newTitle, newDescription, newDueDate, newPriority); //! update module
+    const editTodo = (todo, newTitle, newDescription, newDueDate, newPriority) => {
+        todo.updateTodo(newTitle, newDescription, newDueDate, newPriority);
     }
 
     const deleteTodo = (todo) => {
         if (activeProject) { activeProject.removeTodo(todo) }
     }
 
-    const toggleTodoStatus = () => todo.toggleStatus()
-
-    const setTodoPriority = (newPriority) => {
-        todo.changePriority(newPriority);
-    }
+    const toggleTodoStatus = (todo) => todo.toggleStatus()
 
     return {
         createNewTodo,
         editTodo,
         deleteTodo,
         toggleTodoStatus,
-        setTodoPriority,
     };
 })();
 
