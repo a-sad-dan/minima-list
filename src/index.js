@@ -69,3 +69,24 @@ function resizeSideBar() {
 resizeSideBar();
 // for dynamically closing SideBar
 window.addEventListener('resize', resizeSideBar);
+
+
+import TaskForm from './components/old-task-form/task-form.js';
+
+import Modal from './components/modal/modal.js';
+
+const newProjectBtn = document.getElementById('add-project');
+
+newProjectBtn.addEventListener('click', () => {
+    Modal.renderModal(ProjectForm.newForm());
+})
+
+const newTaskBtn = document.getElementById('add-task')
+newTaskBtn.addEventListener('click', () => {
+    Modal.renderModal(TaskForm.newTask());
+})
+
+
+import './css/project-form.css'
+import ProjectForm from './components/project-form/project-form.js';
+
