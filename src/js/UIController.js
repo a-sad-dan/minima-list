@@ -16,7 +16,7 @@ const UIcontroller = (() => {
     const updateTodo = (project) => {
         // update todo list in UI
         contentDiv.innerHTML = ''
-        console.table(projectManager.viewTodosInProject(project));
+        // console.table(projectManager.viewTodosInProject(project));
         const allTodos = projectManager.viewTodosInProject(project)
         allTodos.forEach((item) => { renderTodo(item) });
 
@@ -42,13 +42,13 @@ export default UIcontroller;
 
 // Helper Functions
 const renderProject = (project) => {
-    console.log(project)
+    // console.log(project)
     // change this function to make dom elements and append them to the projects Div
     projectsContainer.append(projectCardGenerator(project));
 }
 
 const renderTodo = (todo) => {
-    console.log(todo);
+    // console.log(todo);
     contentDiv.append(todoCardGenerator(todo));
 }
 
@@ -62,7 +62,7 @@ const projectCardGenerator = (project) => {
                     <p class="count">${project.todos.length}</p>
                 `
     card.innerHTML = cardHtml;
-    console.log(card)
+    // console.log(card)
     return card;
 }
 
