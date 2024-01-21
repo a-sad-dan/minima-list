@@ -44,7 +44,18 @@ export default UIcontroller;
 const renderProject = (project) => {
     // console.log(project)
     // change this function to make dom elements and append them to the projects Div
-    projectsContainer.append(projectCardGenerator(project));
+    const card = projectCardGenerator(project);
+    // Attach event listener to listen for render 
+    card.addEventListener('click', () => {
+
+        projectManager.switchProject(project);
+        UIcontroller.updateTodo(projectManager.getActiveProject())
+    });
+
+    // add card to sidebar
+    projectsContainer.append(card);
+
+
 }
 
 const renderTodo = (todo) => {
