@@ -1,7 +1,10 @@
 import closeBtn from '../old-task-form/close-circle-outline.svg'
 import submitBtn from '../old-task-form/checkmark-circle-outline.svg'
+import UIcontroller from '../../js/UIController';
 
 import Modal from '../modal/modal';
+
+import projectManager from '../../js/projectManager';
 
 
 const ProjectForm = (() => {
@@ -34,6 +37,12 @@ const ProjectForm = (() => {
         const projectName = taskData.get('project-name');
         console.log({ projectName })
 
+        projectManager.createNewProject(projectName);
+        projectManager.switchProject(projectName);
+
+        console.log(projectManager.viewAllProjects());
+        UIcontroller.updateProjectList();
+        console.log('active project', projectManager.getActiveProject())
         event.target.reset();
         Modal.closeModal();
     }
