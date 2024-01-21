@@ -7,6 +7,9 @@ import trashIcon from './trash-outline.svg'
 import '../../css/task-form.css'
 
 import Modal from '../modal/modal'
+import UIcontroller from '../../js/UIController'
+import projectManager from '../../js/projectManager'
+import todoManager from '../../js/toDoManager'
 
 const TaskForm = (() => {
     const taskForm = document.createElement('form');
@@ -60,6 +63,7 @@ const TaskForm = (() => {
 
     taskForm.addEventListener('submit', (event) => {
         saveProject(event);
+        hideForm();
     });
 
 
@@ -70,19 +74,24 @@ const TaskForm = (() => {
 
     function saveProject(event) {
         event.preventDefault();
-
         // Collecting Data from the form
         let taskData = new FormData(taskForm);
-
         const taskName = taskData.get('taskName');
         const dueDate = taskData.get('date');
-        const taskPriority = taskData.get('color').toLowerCase();
+        const priority = taskData.get('color').toLowerCase();
         const description = taskData.get('description');
 
+        //Get active Project and append the new task to the project
+        const activeProject = projectManager.getActiveProject();
+        todoManager.createNewTodo(activeProject, taskName, description, dueDate, priority)
         event.target.reset();
 
-        console.log({ taskName, description, dueDate, taskPriority })
+        // render the new task by forcing re render
+        UIcontroller.updateTodo(activeProject);
+
     }
+
+
     const newTask = () => taskForm;
 
     return { newTask }
