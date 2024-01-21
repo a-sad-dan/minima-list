@@ -12,8 +12,6 @@ import UIcontroller from './js/UIController';
 // Initialise Application
 const homeProject = projectManager.createNewProject('Home');
 
-const p2 = projectManager.createNewProject('Anatomy');
-
 // Set initial project to active
 projectManager.switchProject(homeProject);
 
@@ -21,18 +19,12 @@ projectManager.switchProject(homeProject);
 // Add dummy tasks to the project
 todoManager.createNewTodo(homeProject, "Buy Groceries", "1 kg tomatoes, 1kg potato", "29-01-2024", "medium");
 todoManager.createNewTodo(homeProject, "Study for exams", "", "29-01-2024", "high");
-todoManager.createNewTodo(homeProject, "Top Realty", "Gift her sth", "23-01-2024", "medium");
-
-todoManager.createNewTodo(homeProject, "Buy Groceries", "1 kg tomatoes, 1kg potato", "29-01-2024", "medium");
-todoManager.createNewTodo(homeProject, "Study for exams", "", "29-01-2024", "high");
-todoManager.createNewTodo(homeProject, "Top Realty", "Gift her sth", "23-01-2024", "medium");
-
 
 // Render the projects based on the UI
 
 // First render the projects div
 UIcontroller.updateProjectList();
-UIcontroller.updateTodo(homeProject);
+UIcontroller.updateTodo(projectManager.getActiveProject());
 
 
 //todo Include the code after this in its own module
