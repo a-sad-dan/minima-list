@@ -37,8 +37,9 @@ const ProjectForm = (() => {
         const projectName = taskData.get('project-name');
         console.log({ projectName })
 
-        projectManager.createNewProject(projectName);
-        projectManager.switchProject(projectName);
+        const newProject = projectManager.createNewProject(projectName);
+
+        projectManager.switchProject(newProject);
 
         console.log(projectManager.viewAllProjects());
         UIcontroller.updateProjectList();
