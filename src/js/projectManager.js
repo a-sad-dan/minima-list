@@ -17,6 +17,8 @@ const projectManager = (() => {
         activeProject = project
     };
 
+    const getActiveProject = () => activeProject;
+
     const deleteProject = (project) => {
         const index = projects.indexOf(project);
         if (index !== -1) {
@@ -36,7 +38,7 @@ const projectManager = (() => {
         return project.todos.slice(); // Return a copy of the todos array within the specified project
     };
 
-    return { createNewProject, switchProject, deleteProject, viewAllProjects, viewTodosInProject }
+    return { createNewProject, switchProject, getActiveProject, deleteProject, viewAllProjects, viewTodosInProject }
 })();
 
 
