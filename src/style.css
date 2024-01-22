@@ -65,7 +65,7 @@ body {
     padding-top: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(378px, 1fr));
-    align-items: stretch;
+    align-items: start;
 }
 
 
@@ -145,6 +145,10 @@ body {
 
     #Logo {
         width: 100px;
+    }
+
+    #main-heading {
+        display: none;
     }
 
 
