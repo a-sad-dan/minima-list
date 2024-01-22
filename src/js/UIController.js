@@ -148,5 +148,8 @@ const todoCardGenerator = (todo) => {
                         </div>
                     `
     todoCard.innerHTML = cardHtml;
+    if (todo.description.trim().length === 0) {
+        todoCard.querySelector('.expand-btn').classList.add('hidden');
+    }
     return todoCard;
 }
