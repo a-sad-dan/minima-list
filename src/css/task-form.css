@@ -1,5 +1,5 @@
 /* Style for desktop */
-#task-form {
+.task-form {
     min-width: 320px;
     max-width: 400px;
     box-shadow: 0 0 20px -2px rgba(0, 0, 0, 0.15);
@@ -19,7 +19,7 @@
 
 }
 
-#task-form input {
+.task-form input {
     background: unset;
 }
 
@@ -28,7 +28,7 @@
     opacity: 0;
 }
 
-#task-form .close-btn {
+.task-form .close-btn {
     align-self: flex-end;
     z-index: 3;
     cursor: pointer
@@ -43,7 +43,7 @@ label.hidden {
     display: none
 }
 
-#task-form #taskName {
+.task-form #taskName {
     font-size: 1.1rem;
     color: #555;
     padding: .2rem .5rem;
@@ -202,7 +202,6 @@ input:checked~.checkmark::after {
     padding: 0.5rem;
     resize: none;
     border-bottom: 1px solid #888;
-    height: 2rem;
     color: #555;
 }
 
@@ -214,7 +213,7 @@ input:checked~.checkmark::after {
 
 
 @media screen and (max-width: 768px) {
-    #task-form {
+    .task-form {
         top: 1rem;
     }
 }
