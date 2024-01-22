@@ -9,7 +9,7 @@ import projectManager from '../../js/projectManager';
 
 const ProjectForm = (() => {
     const projectForm = document.createElement('form');
-    projectForm.id = 'project-form'
+    projectForm.classList.add('project-form');
     const projectFormHtml =
         `<img src="${closeBtn}" alt="" class="close-btn">
 <div class="form-row">
@@ -41,7 +41,6 @@ const ProjectForm = (() => {
 
         projectManager.switchProject(newProject);
 
-        console.log(projectManager.viewAllProjects());
         UIcontroller.updateProjectList();
         console.log('active project', projectManager.getActiveProject())
         event.target.reset();
@@ -52,8 +51,53 @@ const ProjectForm = (() => {
         Modal.closeModal();
     }
 
+
+    const newEditForm = (project) => {
+        const editForm = document.createElement('form');
+        editForm.classList.add('project-form');
+        editForm.innerHTML =
+            `
+                        <img src="${closeBtn}" alt="" class="close-btn">
+                        <div class="form-row">
+                            <label for="project-name" class="hidden">Project Name</label>
+                            <input type="text" id="project-name" name="project-name" placeholder="Project Name" required value = "${project.name}">
+                        </div>
+                        <button type="submit" class="submit-btn">
+                        <img src="${submitBtn}" alt="submit">
+                        </button>
+                        `
+        //To listen for form close
+        editForm.addEventListener('click', function (event) {
+            const btn = event.target;
+            if (btn.matches('.close-btn')) {
+                hideForm();
+            }
+        });
+
+        editForm.addEventListener('submit', (event) => handleUpdate(event));
+
+        function handleUpdate(event) {
+            event.preventDefault();
+
+            let taskData = new FormData(editForm);
+            const newName = taskData.get('project-name');
+            console.log({ newName });
+            project.name = newName;
+
+            event.target.reset();
+            Modal.closeModal();
+
+            // force UI re render
+            UIcontroller.updateProjectList()
+            UIcontroller.updateTodo(projectManager.getActiveProject());
+
+        }
+
+        return editForm
+    }
     const newForm = () => projectForm;
-    return { newForm }
+
+    return { newForm, newEditForm }
 })();
 
 
