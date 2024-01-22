@@ -1,6 +1,6 @@
 // Responsibility: Creates instances of project objects.
 
-const createTodo = (title = '', description = '', dueDate = null, priority = 'low', isDone = 'false') => {
+const createTodo = (title = '', description = '', dueDate = null, priority = 'low', isDone = false) => {
     const todo = {
         // props
         title: title,

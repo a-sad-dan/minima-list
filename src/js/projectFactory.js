@@ -5,6 +5,7 @@ const createProject = (name = 'default') => {
         // props
         name: name,
         todos: [],
+
         //methods
         addTodo: function (todo) {
             this.todos.push(todo)
@@ -13,6 +14,7 @@ const createProject = (name = 'default') => {
             const index = this.todos.indexOf(todo)
             if (index !== -1) { this.todos.splice(index, 1) }
         }
+
     }
     return project
 }
