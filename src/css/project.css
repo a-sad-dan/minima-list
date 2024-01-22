@@ -54,6 +54,18 @@ p.count {
     border-radius: 8px;
 }
 
+button.edit-btn {
+    height: 22px;
+    width: 22px;
+    background-size: contain !important;
+    border: unset;
+    transition: 0.1 scale ease-in;
+}
+
+button.edit-btn:active {
+    scale: 1.1;
+}
+
 button#add-project:active {
     font-weight: 500;
     box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.2) inset;
