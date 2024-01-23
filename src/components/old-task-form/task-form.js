@@ -1,8 +1,7 @@
 import addIcon from './add-plus.svg'
 import closeBtn from './close-circle-outline.svg'
 import submitBtn from './checkmark-circle-outline.svg'
-import trashIcon from './trash-outline.svg'
-
+import trashIcon from './trash.svg'
 
 import '../../css/task-form.css'
 
@@ -13,7 +12,7 @@ import todoManager from '../../js/toDoManager'
 
 const TaskForm = (() => {
     const taskForm = document.createElement('form');
-    taskForm.id = "task-form";
+    taskForm.className = "task-form";
     // taskForm.classList.add('collapse');
     taskForm.innerHTML = `
                         <img src="${closeBtn}" alt="" class="close-btn">
@@ -97,6 +96,7 @@ const TaskForm = (() => {
         editForm.classList.add('task-form');
         editForm.innerHTML = `
                         <img src="${closeBtn}" alt="" class="close-btn">
+                        <img src="${trashIcon}" alt ="delete" class ="delete-btn">
                         <div class="form-row">
                             <label for="taskName" class="hidden"">Task Name</label>
                             <input type="text" id="taskName" name="taskName" placeholder="Task Name" value = "${todo.title}" required>
@@ -134,9 +134,15 @@ const TaskForm = (() => {
         //todo add logic to add checked attribute to the correct priority
         editForm.addEventListener('click', function (event) {
             const btn = event.target;
-            if (btn.matches('.close-btn')) {
+            if (btn.matches('.close-btn')) hideForm();
+            if (btn.matches('.delete-btn')) {
+                todoManager.deleteTodo(todo);
+                // force ui update
                 hideForm();
-            }
+                UIcontroller.updateTodo(projectManager.getActiveProject());
+                UIcontroller.updateProjectList();
+
+            };
         });
 
         editForm.addEventListener('submit', (event) => handleUpdate(event));
