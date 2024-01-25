@@ -6,6 +6,7 @@ import Modal from '../modal/modal';
 
 import projectManager from '../../js/projectManager';
 
+import trashIcon from './../../assets/icons/trash.svg'
 
 const ProjectForm = (() => {
     const projectForm = document.createElement('form');
@@ -42,7 +43,6 @@ const ProjectForm = (() => {
         projectManager.switchProject(newProject);
 
         UIcontroller.updateProjectList();
-        console.log('active project', projectManager.getActiveProject())
         event.target.reset();
         Modal.closeModal();
     }
@@ -51,13 +51,14 @@ const ProjectForm = (() => {
         Modal.closeModal();
     }
 
-
     const newEditForm = (project) => {
         const editForm = document.createElement('form');
         editForm.classList.add('project-form');
         editForm.innerHTML =
             `
                         <img src="${closeBtn}" alt="" class="close-btn">
+                        <img src = "${trashIcon}" class = "delete-btn" alt = "delete">
+                        <img >
                         <div class="form-row">
                             <label for="project-name" class="hidden">Project Name</label>
                             <input type="text" id="project-name" name="project-name" placeholder="Project Name" required value = "${project.name}">
@@ -69,8 +70,13 @@ const ProjectForm = (() => {
         //To listen for form close
         editForm.addEventListener('click', function (event) {
             const btn = event.target;
-            if (btn.matches('.close-btn')) {
-                hideForm();
+            if (btn.matches('.close-btn')) hideForm();
+            if (btn.matches('.delete-btn')) {
+                projectManager.deleteProject(project);
+                // Force UI update
+                UIcontroller.updateProjectList();
+                UIcontroller.updateTodo(projectManager.getActiveProject());
+                Modal.closeModal();
             }
         });
 
@@ -81,8 +87,8 @@ const ProjectForm = (() => {
 
             let taskData = new FormData(editForm);
             const newName = taskData.get('project-name');
-            console.log({ newName });
-            project.name = newName;
+
+            projectManager.editProject(project, newName);
 
             event.target.reset();
             Modal.closeModal();

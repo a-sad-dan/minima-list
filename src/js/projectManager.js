@@ -1,6 +1,10 @@
 // Responsibility: Creates instances of todo items with the specified properties.
+import UIcontroller from "./UIController";
+import LocStorage from "./localStorage";
 import { createProject } from "./projectFactory";
 
+
+// ! TODO - DECOUPLE FORMS FROM MAKING CHANGES IN OBJECTS DIRECTLY - INSTEAD USE THE MANAGERS
 
 const projectManager = (() => {
     const projects = []
@@ -9,8 +13,18 @@ const projectManager = (() => {
 
     const createNewProject = (projectName) => {
         const newProject = createProject(projectName);
+        activeProject = newProject;
         projects.push(newProject);
+        UIcontroller.updateTodo(activeProject);
+        // save changes to local storage
+        LocStorage.saveArray();
         return newProject;
+    }
+
+    const editProject = (project, newName) => {
+        project.name = newName;
+        LocStorage.saveArray();
+        return project
     }
 
     const switchProject = (project) => {
@@ -28,6 +42,7 @@ const projectManager = (() => {
                 activeProject = null;
             }
         }
+        LocStorage.saveArray();
     };
 
     const viewAllProjects = () => {
@@ -38,7 +53,7 @@ const projectManager = (() => {
         return project.todos.slice(); // Return a copy of the todos array within the specified project
     };
 
-    return { createNewProject, switchProject, getActiveProject, deleteProject, viewAllProjects, viewTodosInProject }
+    return { createNewProject, editProject, switchProject, getActiveProject, deleteProject, viewAllProjects, viewTodosInProject }
 })();
 
 
