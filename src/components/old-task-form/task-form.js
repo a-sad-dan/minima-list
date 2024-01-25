@@ -55,14 +55,6 @@ const TaskForm = (() => {
     const formTextarea = taskForm.querySelector('#description');
     formTextarea.addEventListener('input', autoResize, false);
 
-    const editFormTextArea = editTodoForm.querySelector('#description');
-    editFormTextArea.addEventListener('input', autoResize, false);
-
-    function autoResize() {
-        this.style.height = 'auto';
-        this.style.height = this.scrollHeight + 'px';
-    }
-
     taskForm.addEventListener('click',
         function (event) {
             const btn = event.target;
@@ -100,6 +92,8 @@ const TaskForm = (() => {
         UIcontroller.updateTodo(activeProject);
 
     }
+
+
 
 
 
@@ -142,6 +136,13 @@ const TaskForm = (() => {
                         <button type="submit" class="submit-btn">
                             <img src="${submitBtn}" alt="submit">
                         </button>`
+
+
+
+        //auto height
+        const editFormTextArea = editForm.querySelector('#description');
+        editFormTextArea.addEventListener('input', autoResize, false);
+
 
         //todo add logic to add checked attribute to the correct priority
         editForm.addEventListener('click', function (event) {
@@ -196,3 +197,11 @@ const TaskForm = (() => {
 })();
 
 export default TaskForm;
+
+
+
+// helper function
+function autoResize() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+}

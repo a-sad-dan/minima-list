@@ -6,7 +6,7 @@ import Modal from '../modal/modal';
 
 import projectManager from '../../js/projectManager';
 
-import trashIcon from './../../assets/icons/trash.svg'
+import trashIcon from './../../components/old-task-form/trash.svg'
 
 const ProjectForm = (() => {
     const projectForm = document.createElement('form');
@@ -28,7 +28,6 @@ const ProjectForm = (() => {
             hideForm();
         }
     });
-
     projectForm.addEventListener('submit', (event) => saveProject(event))
 
 
@@ -89,7 +88,6 @@ const ProjectForm = (() => {
             const newName = taskData.get('project-name');
 
             projectManager.editProject(project, newName);
-
             event.target.reset();
             Modal.closeModal();
 
