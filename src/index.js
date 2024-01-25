@@ -9,21 +9,38 @@ import { createTodo } from './js/toDoFactory';
 import { createProject } from './js/projectFactory';
 import UIcontroller from './js/UIController';
 
-// Initialise Application
-const homeProject = projectManager.createNewProject('Home');
-
-// Set initial project to active
-projectManager.switchProject(homeProject);
+import './js/localStorage.js'
 
 
-// Add dummy tasks to the project
-todoManager.createNewTodo(homeProject, "Buy Groceries", "1 kg tomatoes, 1kg potato", "29-01-2024", "medium");
-todoManager.createNewTodo(homeProject, "Study for exams", "", "29-01-2024", "high");
+// check if old data is present
+if (LocStorage.arrayExists()) {
 
-// Render the projects based on the UI
+    const projects = JSON.parse(LocStorage.getArray());
+    const activeProject = JSON.parse(LocStorage.getActiveProject());
 
-// First render the projects div
+    projectManager.setProjectArr(projects);
+    projectManager.switchProject(activeProject);
+
+    UIcontroller.updateProjectList();
+
+}
+else {
+    // Initialise Application
+    const homeProject = projectManager.createNewProject('Home');
+    // Set initial project to active
+    projectManager.switchProject(homeProject);
+
+    // Add dummy tasks to the project
+    todoManager.createNewTodo(homeProject, "Buy Groceries", "1 kg tomatoes, 1kg potato", "29-01-2024", "medium");
+    todoManager.createNewTodo(homeProject, "Study for exams", "", "29-01-2024", "high");
+}
+
+
+
+
 UIcontroller.updateProjectList();
+// Render the projects based on the UI
+// First render the projects div
 UIcontroller.updateTodo(projectManager.getActiveProject());
 
 
@@ -81,4 +98,5 @@ newTaskBtn.addEventListener('click', () => {
 
 import './css/project-form.css'
 import ProjectForm from './components/project-form/project-form.js';
+import LocStorage from './js/localStorage.js';
 
