@@ -33,10 +33,6 @@ const UIcontroller = (() => {
         updateProjectList()
     }
 
-    const toggleExpandDetails = (todo) => {
-        // Expand a todo item to display and edit its details
-    }
-
     const showError = (message) => {
         //Display Error messages to the user
         const errorMessage = document.createElement('p')

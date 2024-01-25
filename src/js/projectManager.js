@@ -4,17 +4,20 @@ import LocStorage from "./localStorage";
 import { createProject } from "./projectFactory";
 
 
-// ! TODO - DECOUPLE FORMS FROM MAKING CHANGES IN OBJECTS DIRECTLY - INSTEAD USE THE MANAGERS
-
 const projectManager = (() => {
-    const projects = []
+    let projects = []
     let activeProject = null;
 
+    const setProjectArr = (newArr) => {
+        projects = newArr;
+    }
+
+    //? how to do this on start???
 
     const createNewProject = (projectName) => {
         const newProject = createProject(projectName);
-        activeProject = newProject;
         projects.push(newProject);
+        switchProject(newProject);
         UIcontroller.updateTodo(activeProject);
         // save changes to local storage
         LocStorage.saveArray();
@@ -28,7 +31,8 @@ const projectManager = (() => {
     }
 
     const switchProject = (project) => {
-        activeProject = project
+        activeProject = project;
+        LocStorage.saveActiveProject(activeProject);
     };
 
     const getActiveProject = () => activeProject;
@@ -53,7 +57,9 @@ const projectManager = (() => {
         return project.todos.slice(); // Return a copy of the todos array within the specified project
     };
 
-    return { createNewProject, editProject, switchProject, getActiveProject, deleteProject, viewAllProjects, viewTodosInProject }
+
+
+    return { createNewProject, editProject, switchProject, getActiveProject, deleteProject, viewAllProjects, viewTodosInProject, setProjectArr }
 })();
 
 
