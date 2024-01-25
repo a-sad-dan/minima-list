@@ -8,8 +8,10 @@ import LocStorage from "./localStorage";
 
 const todoManager = (() => {
 
-    const createNewTodo = (project, title, description, dueDate, priority) => {
-        const newTodo = createTodo(title, description, dueDate, priority);
+    const createNewTodo = (project, title, description, dueDate, priority, isDone = false) => {
+        console.log('project that was passed is', project)
+
+        const newTodo = createTodo(title, description, dueDate, priority, isDone);
         project.addTodo(newTodo);
         LocStorage.saveArray();
     }

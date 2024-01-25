@@ -1,6 +1,7 @@
 // Code for local storage
 
 import projectManager from "./projectManager";
+import todoManager from "./toDoManager";
 
 const LocStorage = (() => {
     //Checking for local storage
@@ -33,9 +34,7 @@ const LocStorage = (() => {
 
     //Using local storage
     if (storageAvailable("localStorage")) {
-        // console.log('local storage is available');
-
-        // save the array in the local storage;
+        console.log('local storage is available');
     }
     else {
         throw ("local storage not available");
@@ -46,6 +45,20 @@ const LocStorage = (() => {
         const projectsArr = JSON.stringify(projectManager.viewAllProjects());
         localStorage.setItem('projectsArr', projectsArr);
     }
+    const populateData = () => {
+        const arr = JSON.parse(localStorage.getItem('projectsArr'));
+        arr.forEach((project) => {
+            const newProject = projectManager.createNewProject(project.name);
+            console.log(newProject);
+            const todos = project.todos;
+            console.log(todos);
+            todos.forEach((todo) => {
+                const newTodo = todoManager.createNewTodo(newProject, todo.title, todo.description, todo.dueDate, todo.priority, todo.isDone);
+                console.log(newTodo);
+            })
+        })
+        console.log(arr);
+    }
 
     const saveActiveProject = (project) => localStorage.setItem('activeProject', JSON.stringify(project));
 
@@ -53,14 +66,16 @@ const LocStorage = (() => {
 
     const arrayExists = () => localStorage.getItem("projectsArr") !== null;
 
-    const getArray = () => localStorage.getItem("projectsArr")
-
-
     const clearArray = () => localStorage.removeItem("projectsArr");
 
 
-    return { saveArray, getArray, arrayExists, clearArray, saveActiveProject, getActiveProject };
+    return { saveArray, populateData, arrayExists, clearArray, saveActiveProject, getActiveProject };
 })();
+
+
+import { createTodo } from "./toDoFactory";
+
+// to add the methods back
 
 
 export default LocStorage;

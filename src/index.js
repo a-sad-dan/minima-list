@@ -13,19 +13,18 @@ import './js/localStorage.js'
 
 
 // check if old data is present
+
 if (LocStorage.arrayExists()) {
-
-    const projects = JSON.parse(LocStorage.getArray());
-    const activeProject = JSON.parse(LocStorage.getActiveProject());
-
-    projectManager.setProjectArr(projects);
-    projectManager.switchProject(activeProject);
-
-    UIcontroller.updateProjectList();
-
+    // const activeProject = JSON.parse(LocStorage.getActiveProject());
+    LocStorage.populateData();
+    // projectManager.setProjectArr(projects);
+    // projectManager.switchProject(activeProject);
+    // 
+    // UIcontroller.updateProjectList();
+    // 
 }
+
 else {
-    // Initialise Application
     const homeProject = projectManager.createNewProject('Home');
     // Set initial project to active
     projectManager.switchProject(homeProject);
@@ -33,12 +32,12 @@ else {
     // Add dummy tasks to the project
     todoManager.createNewTodo(homeProject, "Buy Groceries", "1 kg tomatoes, 1kg potato", "29-01-2024", "medium");
     todoManager.createNewTodo(homeProject, "Study for exams", "", "29-01-2024", "high");
+    UIcontroller.updateProjectList();
 }
 
 
 
 
-UIcontroller.updateProjectList();
 // Render the projects based on the UI
 // First render the projects div
 UIcontroller.updateTodo(projectManager.getActiveProject());

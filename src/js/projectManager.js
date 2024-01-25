@@ -16,8 +16,8 @@ const projectManager = (() => {
 
     const createNewProject = (projectName) => {
         const newProject = createProject(projectName);
-        projects.push(newProject);
         switchProject(newProject);
+        projects.push(newProject);
         UIcontroller.updateTodo(activeProject);
         // save changes to local storage
         LocStorage.saveArray();
@@ -32,7 +32,7 @@ const projectManager = (() => {
 
     const switchProject = (project) => {
         activeProject = project;
-        LocStorage.saveActiveProject(activeProject);
+        // LocStorage.saveActiveProject(project);
     };
 
     const getActiveProject = () => activeProject;
@@ -59,7 +59,7 @@ const projectManager = (() => {
 
 
 
-    return { createNewProject, editProject, switchProject, getActiveProject, deleteProject, viewAllProjects, viewTodosInProject, setProjectArr }
+    return { createNewProject, editProject, switchProject, getActiveProject, deleteProject, viewAllProjects, viewTodosInProject }
 })();
 
 
