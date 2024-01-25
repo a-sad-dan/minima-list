@@ -2,21 +2,32 @@
 
 import { createTodo } from "./toDoFactory";
 
+import projectManager from "./projectManager";
+import LocStorage from "./localStorage";
+
+
 const todoManager = (() => {
 
     const createNewTodo = (project, title, description, dueDate, priority) => {
         const newTodo = createTodo(title, description, dueDate, priority);
         project.addTodo(newTodo);
+        LocStorage.saveArray();
     }
     const editTodo = (todo, newTitle, newDescription, newDueDate, newPriority) => {
         todo.updateTodo(newTitle, newDescription, newDueDate, newPriority);
+        LocStorage.saveArray();
     }
 
     const deleteTodo = (todo) => {
+        const activeProject = projectManager.getActiveProject();
         if (activeProject) { activeProject.removeTodo(todo) }
+        LocStorage.saveArray();
     }
 
-    const toggleTodoStatus = (todo) => todo.toggleStatus()
+    const toggleTodoStatus = (todo) => {
+        todo.toggleStatus()
+        LocStorage.saveArray();
+    }
 
     return {
         createNewTodo,
