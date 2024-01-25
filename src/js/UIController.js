@@ -16,10 +16,13 @@ const UIcontroller = (() => {
         projectsContainer.innerHTML = '';
         const allProjects = projectManager.viewAllProjects();
         allProjects.forEach((item) => { renderProject(item) })
-
     }
-
+    // renders all the todos
     const updateTodo = (project) => {
+        if (project == null) {
+            UIcontroller.renderHelp('No More Pending Projects : )');
+            return
+        }
         // update todo list in UI
         contentDiv.innerHTML = ''
         // console.table(projectManager.viewTodosInProject(project));
@@ -27,7 +30,6 @@ const UIcontroller = (() => {
         allTodos.forEach((item) => { renderTodo(item) });
 
         subheading.innerText = ` ${project.name}`
-
         updateProjectList()
     }
 
@@ -45,8 +47,15 @@ const UIcontroller = (() => {
         // Clear input field after input/editing todos
     }
 
+    const renderHelp = (message) => {
+        const p = document.createElement('p')
+        p.className = 'help-message'
+        p.textContent = message
+        contentDiv.innerHTML = p.outerHTML;
+    }
 
-    return { updateProjectList, updateTodo }
+
+    return { updateProjectList, updateTodo, renderHelp }
 })();
 
 export default UIcontroller;
@@ -56,9 +65,8 @@ import ProjectForm from "../components/project-form/project-form";
 import Modal from "../components/modal/modal";
 import TaskForm from "../components/old-task-form/task-form";
 
-// Helper Functions
+// Helper Functions 
 const renderProject = (project) => {
-
     const card = projectCardGenerator(project);
 
     // Attach event listener to listen for render 
@@ -79,6 +87,7 @@ const renderProject = (project) => {
 }
 
 
+// renders a single todo and attaches listeners to it
 const renderTodo = (todo) => {
     // console.log(todo);
     const todoCard = todoCardGenerator(todo);
@@ -153,3 +162,4 @@ const todoCardGenerator = (todo) => {
     }
     return todoCard;
 }
+
