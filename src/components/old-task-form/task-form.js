@@ -157,15 +157,12 @@ const TaskForm = (() => {
             const newDescription = taskData.get('description');
 
             // change todo values
-            todo.title = newTaskName;
-            todo.dueDate = newDueDate;
-            todo.description = newDescription;
-            todo.priority = newPriority;
+            todoManager.editTodo(todo, newTaskName, newDescription, newDueDate, newPriority);
 
             // reset form --> close form
             event.target.reset();
             Modal.closeModal();
-
+            
             // force ui re render
             UIcontroller.updateProjectList() //?can remove this???
             UIcontroller.updateTodo(projectManager.getActiveProject());
