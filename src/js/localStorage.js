@@ -33,7 +33,7 @@ const LocStorage = (() => {
 
     //Using local storage
     if (storageAvailable("localStorage")) {
-        console.log('local storage is available');
+        // console.log('local storage is available');
 
         // save the array in the local storage;
     }
@@ -45,15 +45,21 @@ const LocStorage = (() => {
     const saveArray = () => {
         const projectsArr = JSON.stringify(projectManager.viewAllProjects());
         localStorage.setItem('projectsArr', projectsArr);
-
-        console.table('saved this to the local storage', JSON.parse(getArray()))
     }
+
+    const saveActiveProject = (project) => localStorage.setItem('activeProject', JSON.stringify(project));
+
+    const getActiveProject = () => localStorage.getItem('activeProject');
+
+    const arrayExists = () => localStorage.getItem("projectsArr") !== null;
 
     const getArray = () => localStorage.getItem("projectsArr")
 
+
     const clearArray = () => localStorage.removeItem("projectsArr");
 
-    return { saveArray, getArray, clearArray };
+
+    return { saveArray, getArray, arrayExists, clearArray, saveActiveProject, getActiveProject };
 })();
 
 
