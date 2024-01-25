@@ -19,8 +19,7 @@ body {
     overflow: hidden;
 }
 
-#app.blurred
-{
+#app.blurred {
     filter: blur(1.5px);
 }
 
@@ -176,6 +175,7 @@ body {
         padding: 1rem;
         overflow: scroll;
         height: 90%;
+        align-items: stretch;
     }
 
 }
