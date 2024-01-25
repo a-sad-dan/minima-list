@@ -44,12 +44,24 @@ const TaskForm = (() => {
                         </div>
                         <div class="form-row">
                             <label for = "description" class = "hidden">Description</label>
-                            <textarea name="description" id ="description" placeholder="Add Description..." resize = "true"></textarea>
+                            <textarea name="description" id ="description" rows="1" placeholder="Add Description..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn">
                             <img src="${submitBtn}" alt="submit">
                         </button>`
 
+
+    //For autoheight on input
+    const formTextarea = taskForm.querySelector('#description');
+    formTextarea.addEventListener('input', autoResize, false);
+
+    const editFormTextArea = editTodoForm.querySelector('#description');
+    editFormTextArea.addEventListener('input', autoResize, false);
+
+    function autoResize() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    }
 
     taskForm.addEventListener('click',
         function (event) {
@@ -162,7 +174,7 @@ const TaskForm = (() => {
             // reset form --> close form
             event.target.reset();
             Modal.closeModal();
-            
+
             // force ui re render
             UIcontroller.updateProjectList() //?can remove this???
             UIcontroller.updateTodo(projectManager.getActiveProject());

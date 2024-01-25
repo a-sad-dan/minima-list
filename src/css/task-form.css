@@ -23,16 +23,26 @@
     background: unset;
 }
 
-#task-form.collapse {
+.task-form.collapse {
     max-width: 0;
     opacity: 0;
 }
 
-.task-form .close-btn {
+/* Shared styles between both forms */
+.close-btn {
     align-self: flex-end;
     z-index: 3;
     cursor: pointer
 }
+
+.delete-btn {
+    width: 1.5rem;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
 
 .button,
 .checkmark {
@@ -200,9 +210,12 @@ input:checked~.checkmark::after {
     font-size: 1rem;
     font-family: inherit;
     padding: 0.5rem;
-    resize: none;
     border-bottom: 1px solid #888;
     color: #555;
+    
+    display: block;
+    overflow: hidden;
+    resize: none;
 }
 
 #description:focus,
