@@ -1,5 +1,5 @@
 // imports
-import './style.css';w
+import './style.css';
 import './css/project.css';
 import './css/todo.css';
 
@@ -67,8 +67,20 @@ function toggleSideBar(isSideBarOpen) {
 		heading.classList.remove('padded');
 	}
 }
+
+//todo - refactor to simplify
+if (localStorage.getItem('colorMode') === 'dark') {
+	console.log('Tried toggling to dark');
+	document.documentElement.classList.add('dark');
+}
+
 function toggleLightMode() {
 	document.documentElement.classList.toggle('dark');
+	if (localStorage.getItem('colorMode') === 'light') {
+		localStorage.setItem('colorMode', 'dark');
+	} else {
+		localStorage.setItem('colorMode', 'light');
+	}
 }
 
 function resizeSideBar() {
