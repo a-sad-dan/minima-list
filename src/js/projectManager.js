@@ -27,7 +27,7 @@ const projectManager = (() => {
     const editProject = (project, newName) => {
         project.name = newName;
         LocStorage.saveArray();
-        return project
+        return projectObject
     }
 
     const switchProject = (project) => {
