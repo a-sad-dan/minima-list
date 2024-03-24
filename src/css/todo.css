@@ -1,122 +1,116 @@
 .todo-card {
-    display: flex;
-    background: whitesmoke;
-    padding: 1rem;
-    max-width: 378px;
-    border-radius: 12px;
-    background: #FDFDFD;
-    box-shadow: 1px 3px 5px -1px rgba(0, 0, 0, 0.10);
-    align-items: center;
-    gap: 0.6rem;
-    flex-shrink: 0;
-    transition: 0.6s ease;
+	display: flex;
+	background: var(--card-bg);
+	padding: 1rem;
+	max-width: 378px;
+	border-radius: 12px;
+	box-shadow: 1px 3px 5px -1px rgba(0, 0, 0, 0.1);
+	align-items: center;
+	gap: 0.6rem;
+	flex-shrink: 0;
+	transition: 0.6s ease;
 }
 
 .todo-card.completed {
-    opacity: 0.6;
-    filter: grayscale(0.8);
-    text-decoration: 2px solid #555 line-through;
-    box-shadow: 1px 2px 10px 2px rgba(0, 0, 0, 0.05);
+	opacity: 0.6;
+	filter: grayscale(0.8);
+	text-decoration: 2px solid var(--text-color) line-through;
+	box-shadow: 1px 2px 10px 2px rgba(0, 0, 0, 0.05);
 }
 
 .todo-card .details {
-    flex-grow: 2;
+	flex-grow: 2;
 }
 
 .todo-card .title {
-    font-weight: 700;
-    font-size: 1.375rem;
-    color: #444;
-
+	font-weight: 700;
+	font-size: 1.375rem;
+	color: var(--text-color);
 }
 
 .todo-card .due-date {
-    color: #ACACAC;
-    font-size: 0.75rem;
-    font-weight: 400;
+	color: var(--dark-grey);
+	font-size: 0.75rem;
+	font-weight: 400;
 }
 
 .todo-card .description {
-    font-size: 1rem;
-    font-weight: 300;
-    color: #444;
-    max-height: 500px;
-    opacity: 1;
-    overflow: hidden;
-    transition: 0.2s max-height ease, 0.3s opacity ease;
+	font-size: 1rem;
+	font-weight: 300;
+	color: var(--text-color);
+	max-height: 500px;
+	opacity: 1;
+	overflow: hidden;
+	transition: 0.2s max-height ease, 0.3s opacity ease;
 }
 
-
 .todo-card .description.hidden {
-    max-height: 0;
-    opacity: 0;
-
+	max-height: 0;
+	opacity: 0;
 }
 
 .priority {
-    height: 20px;
-    width: 20px;
-    border-radius: 24px;
-    background: #2ECC71;
-    flex-shrink: 0;
-    display: flex;
-    overflow: clip;
+	height: 20px;
+	width: 20px;
+	border-radius: 24px;
+	background: #2ecc71;
+	flex-shrink: 0;
+	display: flex;
+	overflow: clip;
 }
 
 .priority.high {
-    background: #E74C3C;
+	background: #e74c3c;
 }
 
 .priority.medium {
-    background: #F4D03F;
+	background: #f4d03f;
 }
 
 .priority.low {
-    background: #2ECC71;
+	background: #2ecc71;
 }
 
 /* action buttons */
 .actions {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
 }
 
 .actions button {
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-    border: unset;
-    background-size: contain !important;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	border: unset;
+	background-size: contain !important;
 }
 
 .actions .edit-btn {
-    height: 24px;
-    width: 24px;
+	height: 24px;
+	width: 24px;
 }
 
 .actions .expand-btn {
-    transition: 0.2s rotate ease;
+	transition: 0.2s rotate ease;
 }
 
 .actions .expand-btn.flipped {
-    rotate: 180deg;
+	rotate: 180deg;
 }
 
 .actions .expand-btn.hidden {
-    display: none;
+	display: none;
 }
 
 button.toggle-done {
-    width: 100%;
-    height: 100%;
-    border: unset;
-    opacity: 0;
-    transition: 0.4s ease;
+	width: 100%;
+	height: 100%;
+	border: unset;
+	opacity: 0;
+	transition: 0.4s ease;
 }
 
-
 button.toggle-done:hover {
-    opacity: 1;
+	opacity: 1;
 }

@@ -10,12 +10,12 @@
     flex-direction: column;
     align-items: center;
     gap: .8rem;
-    color: #777;
+    color: var(--text-color);
     opacity: 1;
     top: 1rem;
     /* transition: max-width 0.6s ease, opacity 0.3s ease; */
     font-weight: 500;
-    background-color: #fdfdfd;
+    background-color: var(--card-bg);
 
 }
 
@@ -55,7 +55,7 @@ label.hidden {
 
 .task-form #taskName {
     font-size: 1.1rem;
-    color: #555;
+    color: var(--text-color);
     padding: .2rem .5rem;
     text-transform: capitalize;
     font-size: 1.1rem;
@@ -70,10 +70,10 @@ input[type="text"]:focus-visible {
 
 input[type="text"] {
     border: unset;
-    border-bottom: 1.5px solid #888;
+    border-bottom: 1.5px solid var(--border);
     text-align: center;
     width: 100%;
-    color: #444
+    color: var(--text-color)
 }
 
 .form-row {
@@ -96,7 +96,7 @@ input[type="text"] {
     border: unset;
     font-size: .8rem;
     font-size: 1rem;
-    color: #444;
+    color: var(--text-color);
     translate: 4px 0;
     font-family: inherit;
     color: inherit
@@ -186,7 +186,7 @@ input:checked~.checkmark::after {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    background-color: #fdfdfd
+    background-color: var(--background)
 }
 
 #subtasks {
@@ -210,8 +210,8 @@ input:checked~.checkmark::after {
     font-size: 1rem;
     font-family: inherit;
     padding: 0.5rem;
-    border-bottom: 1px solid #888;
-    color: #555;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-color);
     
     display: block;
     overflow: hidden;
@@ -221,7 +221,7 @@ input:checked~.checkmark::after {
 #description:focus,
 #description:active {
     outline: none;
-    border-bottom: 2px solid #888;
+    border-bottom: 2px solid var(--dark-grey);
 }
 
 

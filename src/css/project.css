@@ -1,113 +1,108 @@
 button#add-project {
-    border: unset;
+	border: unset;
+	display: block;
 }
 
 button#add-project,
 .project-tab {
-    display: flex;
-    align-self: baseline;
-    width: 95%;
-    align-items: center;
-    border-radius: 12px;
-    margin: 0 auto;
-    justify-content: stretch;
-    background-color: #EFEFEF;
-    gap: 0.8rem;
-    padding: 0.4rem 0.8rem;
-    font-family: 'Mulish', sans-serif;
-    color: #444444;
+	display: flex;
+	align-self: baseline;
+	width: 95%;
+	align-items: center;
+	border-radius: 12px;
+	margin: 0 auto;
+	justify-content: stretch;
+	background-color: var(--card-bg);
+	gap: 0.8rem;
+	padding: 0.4rem 0.8rem;
+	font-family: 'Mulish', sans-serif;
+	color: var(--text-color);
 }
-
-
 
 button#add-project:hover,
 .project-tab:hover {
-    box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.12);
-    background-color: unset;
-    transition: 0.35s ease;
+	box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.12);
+	background-color: unset;
+	transition: 0.35s ease;
 }
 
 .project-tab.active {
-    box-shadow: 0px 2px 12px -4px rgba(0, 0, 0, 0.2);
-    font-weight: 700;
-    background-color: unset;
+	box-shadow: 0px 2px 12px -4px rgba(0, 0, 0, 0.2);
+	font-weight: 700;
+	background-color: unset;
 }
 
 div#projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
 }
 
 button#add-project p,
 .name {
-    text-transform: capitalize;
-    flex-grow: 1;
-    font-size: 1.2rem;
-    font-weight: 600;
+	text-transform: capitalize;
+	flex-grow: 1;
+	font-size: 1.2rem;
+	font-weight: 600;
 }
 
 p.count {
-    font-weight: 800;
-    background-color: #F4D03F;
-    padding: 0.2rem 0.5rem;
-    border-radius: 8px;
+	font-weight: 800;
+	background-color: var(--background);
+	padding: 0.2rem 0.5rem;
+	border-radius: 8px;
 }
 
 button.edit-btn {
-    height: 22px;
-    width: 22px;
-    background-size: contain !important;
-    border: unset;
-    transition: 0.1 scale ease-in;
+	height: 22px;
+	width: 22px;
+	background-size: contain !important;
+	border: unset;
+	transition: 0.1 scale ease-in;
 }
 
 button.edit-btn:active {
-    scale: 1.1;
+	scale: 1.1;
 }
 
 button#add-project:active {
-    font-weight: 500;
-    box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.2) inset;
-    background-color: unset;
-    scale: 0.99;
-    transition: 0.3s ease;
-
-
+	font-weight: 500;
+	box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.2) inset;
+	background-color: unset;
+	scale: 0.99;
+	transition: 0.3s ease;
 }
 
 #add-project:hover {
-    /* box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.2); */
-    background-color: unset;
-    transition: 0.35s ease;
-
+	/* box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.2); */
+	background-color: unset;
+	transition: 0.35s ease;
 }
 
-#add-project>* {
-    font-weight: 700;
+#add-project > * {
+	font-weight: 700;
 }
 
 @media screen and (max-width: 768px) {
-    .project {
-        padding: 0.6rem 0.9rem;
-    }
+	.project {
+		padding: 0.6rem 0.9rem;
+	}
 
-    /* Inline #2 | http://127.0.0.1:5501/dist/ */
+	/* Inline #2 | http://127.0.0.1:5501/dist/ */
 
+	#side-bar {
+		flex-shrink: 0;
+	}
 
-    #side-bar {
-        flex-shrink: 0;
-    }
+	.page-wrapper {
+		overflow-x: hidden;
+	}
 
-    .page-wrapper {
-        overflow-x: hidden;
-    }
-
-    #heading {
-        font-size: 1.4rem;
-        padding-top: .5rem;
-        text-align: center;
-        padding-left: 0;
-    }
-
+	#heading {
+		font-size: 1.4rem;
+		padding-top: 0.5rem;
+		text-align: center;
+		padding-left: 0;
+	}
 }

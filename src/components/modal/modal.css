@@ -11,7 +11,7 @@
     overflow: hidden;
     display: grid;
     place-content: center;
-    background-color: #66666657;
+    opacity: 0.75;
     opacity: 1;
     z-index: 12;
 }
